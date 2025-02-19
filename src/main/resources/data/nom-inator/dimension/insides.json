@@ -1,0 +1,10 @@
+{
+  "type": "nom-inator:insides",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "nom-inator:insides",
+      "layers": []
+    }
+  }
+}
