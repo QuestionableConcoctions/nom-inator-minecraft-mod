@@ -30,6 +30,7 @@ import org.slf4j.LoggerFactory;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 public class Nominator implements ModInitializer {
     public static final String MOD_ID = "nom-inator";
@@ -76,8 +77,10 @@ public class Nominator implements ModInitializer {
 
         ServerPlayConnectionEvents.DISCONNECT.register((ServerPlayNetworkHandler handler, MinecraftServer server) -> {
             StateSaverAndLoader state = StateSaverAndLoader.getServerState(server);
-            UUID playerUuid = handler.getPlayer().getUuid();
+            ServerPlayerEntity player = handler.getPlayer();
+            UUID playerUuid = player.getUuid();
             if (state.isPred(playerUuid)) {
+                unNomAll(player, entity -> entity instanceof PlayerEntity, server);
                 PredData predData = state.getPred(playerUuid);
                 insidesLoader.unloadInsides(predData.id);
             }
@@ -167,7 +170,7 @@ public class Nominator implements ModInitializer {
         state.nom(pred.getUuid(), prey.getUuid());
     }
 
-    private static void unNom(Entity prey, MinecraftServer server) {
+    public static void unNom(Entity prey, MinecraftServer server) {
         StateSaverAndLoader state = StateSaverAndLoader.getServerState(server);
         if (!state.isPrey(prey.getUuid())) {
             LOGGER.error("Tried to un-nom, but prey is not actually prey!");
@@ -190,7 +193,7 @@ public class Nominator implements ModInitializer {
         unloadInsidesIfNecessary(preyData.predUuid, server);
     }
 
-    private static void unNomAll(PlayerEntity pred, MinecraftServer server) {
+    public static void unNomAll(PlayerEntity pred, Predicate<Entity> filter, MinecraftServer server) {
         StateSaverAndLoader state = StateSaverAndLoader.getServerState(server);
         if (!state.isPred(pred.getUuid())) {
             LOGGER.error("Tried to un-nom all, but pred is not a pred!");
@@ -200,10 +203,14 @@ public class Nominator implements ModInitializer {
         Set<UUID> preysClone = new HashSet<>(state.getPred(pred.getUuid()).preys);
         preysClone.forEach((UUID preyUuid) -> {
             Entity prey = Utils.getEntityByUuid(preyUuid, server);
-            if (prey != null) {
+            if (prey != null && filter.test(prey)) {
                 unNom(prey, server);
             }
         });
+    }
+
+    public static void unNomAll(PlayerEntity pred, MinecraftServer server) {
+        unNomAll(pred, entity -> true, server);
     }
 
     private static void prepareInsides(int predId, MinecraftServer server) {

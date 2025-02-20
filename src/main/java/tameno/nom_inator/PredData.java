@@ -1,7 +1,6 @@
 package tameno.nom_inator;
 
 import net.minecraft.nbt.*;
-import net.minecraft.util.math.Vec3d;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +11,7 @@ public class PredData {
     public String name;
     public InsidesConfig config;
     public Set<UUID> preys = new HashSet<>();
+
     public PredData(int newId, String newName) {
         id = newId;
         name = newName;

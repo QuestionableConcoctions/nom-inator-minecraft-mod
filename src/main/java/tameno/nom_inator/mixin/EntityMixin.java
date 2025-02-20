@@ -24,11 +24,4 @@ public abstract class EntityMixin {
         state.removePrey(thisEntity.getUuid());
         Nominator.unloadInsidesIfNecessary(preyData.predUuid, server);
     }
-    @Inject(method = "tick", at = @At("HEAD"))
-    public void tickInject(CallbackInfo ci) {
-        Entity thisEntity = (Entity)(Object)this;
-        if (thisEntity.getWorld().getRegistryKey().equals(Nominator.INSIDES_WORLD_REGISTRY_KEY)) {
-            Nominator.LOGGER.info("tick!");
-        }
-    }
 }
