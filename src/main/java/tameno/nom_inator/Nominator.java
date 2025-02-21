@@ -26,6 +26,7 @@ import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tameno.nom_inator.entity.ModEntities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -51,6 +52,7 @@ public class Nominator implements ModInitializer {
     public void onInitialize() {
 
         Commandinator.registerCommands();
+        ModEntities.registerModEntities();
 
         ServerWorldEvents.LOAD.register((MinecraftServer server, ServerWorld world) -> {
             if (world.getRegistryKey().equals(INSIDES_WORLD_REGISTRY_KEY)) {

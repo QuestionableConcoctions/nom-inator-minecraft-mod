@@ -5,8 +5,14 @@ import io.netty.buffer.Unpooled;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.Vec3d;
+import tameno.nom_inator.entity.InsidesEntityModel;
+import tameno.nom_inator.entity.InsidesEntityRenderer;
+import tameno.nom_inator.entity.ModEntities;
+import tameno.nom_inator.entity.ModModelLayers;
 
 public class NominatorClient implements ClientModInitializer {
 
@@ -16,6 +22,9 @@ public class NominatorClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+
+		EntityRendererRegistry.register(ModEntities.INSIDES, InsidesEntityRenderer::new);
+		EntityModelLayerRegistry.registerModelLayer(ModModelLayers.INSIDES, InsidesEntityModel::getTexturedModelData);
 
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			if (client.player == null) return;
