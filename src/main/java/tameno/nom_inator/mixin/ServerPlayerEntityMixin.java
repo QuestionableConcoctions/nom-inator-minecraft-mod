@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tameno.nom_inator.Nominator;
 
 @Mixin(ServerPlayerEntity.class)
-public class ServerPlayerEntityMixin {
+public abstract class ServerPlayerEntityMixin {
     @Inject(method = "onDeath", at = @At("TAIL"))
     public void onDeathInject(DamageSource damageSource, CallbackInfo ci) {
         ServerPlayerEntity thisPlayer = (ServerPlayerEntity)(Object)this;

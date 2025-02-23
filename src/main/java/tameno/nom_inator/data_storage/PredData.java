@@ -1,4 +1,4 @@
-package tameno.nom_inator;
+package tameno.nom_inator.data_storage;
 
 import net.minecraft.nbt.*;
 

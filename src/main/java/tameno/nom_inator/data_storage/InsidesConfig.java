@@ -1,8 +1,9 @@
-package tameno.nom_inator;
+package tameno.nom_inator.data_storage;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Vec3d;
+import tameno.nom_inator.utils.Utils;
 
 public class InsidesConfig {
     public Vec3d enterPos;

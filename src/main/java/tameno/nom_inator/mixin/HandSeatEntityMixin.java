@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tameno.nom_inator.Nominator;
 
 @Mixin(value = HandSeatEntity.class, remap = false)
-abstract public class HandSeatEntityMixin extends Entity {
+public abstract class HandSeatEntityMixin extends Entity {
     public HandSeatEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }

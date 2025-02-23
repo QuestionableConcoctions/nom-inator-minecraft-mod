@@ -1,11 +1,15 @@
 // Thanks to fabric wiki for this code (has been heavily modified)
 
-package tameno.nom_inator;
+package tameno.nom_inator.data_storage;
 
 import net.minecraft.nbt.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
+import tameno.nom_inator.Nominator;
+import tameno.nom_inator.data_storage.PredData;
+import tameno.nom_inator.data_storage.PreyData;
+import tameno.nom_inator.utils.Utils;
 
 import java.util.*;
 

@@ -1,7 +1,9 @@
-package tameno.nom_inator;
+package tameno.nom_inator.utils;
 
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.ChunkPos;
+import tameno.nom_inator.Nominator;
+import tameno.nom_inator.utils.Utils;
 
 import java.util.HashSet;
 import java.util.Set;

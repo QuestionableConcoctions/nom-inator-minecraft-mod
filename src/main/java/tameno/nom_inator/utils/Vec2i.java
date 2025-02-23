@@ -1,4 +1,4 @@
-package tameno.nom_inator;
+package tameno.nom_inator.utils;
 
 import net.minecraft.util.math.BlockPos;
 

@@ -1,6 +1,7 @@
 package tameno.nom_inator.entity;
 
 import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -22,16 +23,24 @@ public class InsidesEntityRenderer extends EntityRenderer<InsidesEntity> {
     }
 
     @Override
-    public void render(InsidesEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
+    public void render(
+            InsidesEntity entity,
+            float yaw,
+            float tickDelta,
+            MatrixStack matrices,
+            VertexConsumerProvider vertexConsumers,
+            int light
+    ) {
         matrices.push();
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(180.0F));
-        this.model.render(matrices, vertexConsumers.getBuffer(
-                this.model.getLayer(TEXTURE)),
+        this.model.render(
+                matrices,
+                vertexConsumers.getBuffer(RenderLayer.getEntityCutoutNoCull(TEXTURE)),
                 light,
                 OverlayTexture.DEFAULT_UV,
                 1.0F,
-                0.3F,
-                0.2F,
+                1.0F,
+                1.0F,
                 1.0F
         );
         matrices.pop();

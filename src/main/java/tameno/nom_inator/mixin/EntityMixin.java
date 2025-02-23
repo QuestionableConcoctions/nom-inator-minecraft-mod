@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tameno.nom_inator.Nominator;
-import tameno.nom_inator.PreyData;
-import tameno.nom_inator.StateSaverAndLoader;
+import tameno.nom_inator.data_storage.PreyData;
+import tameno.nom_inator.data_storage.StateSaverAndLoader;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {

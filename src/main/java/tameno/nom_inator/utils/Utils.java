@@ -1,9 +1,10 @@
-package tameno.nom_inator;
+package tameno.nom_inator.utils;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.ChunkPos;
+import tameno.nom_inator.Nominator;
 
 import java.util.Set;
 import java.util.UUID;

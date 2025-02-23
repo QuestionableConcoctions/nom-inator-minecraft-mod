@@ -1,4 +1,4 @@
-package tameno.nom_inator;
+package tameno.nom_inator.commands;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

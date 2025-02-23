@@ -13,16 +13,13 @@ public class InsidesEntity extends Entity {
 
     @Override
     protected void initDataTracker() {
-
     }
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
-
     }
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
-
     }
 }
